@@ -1,0 +1,46 @@
+<?php
+
+namespace App\Models;
+
+use CodeIgniter\Model;
+
+class Bagian_model extends Model
+{
+	protected $table                = 'tb_bagian';
+	protected $primaryKey           = 'id_bagian';
+	protected $allowedFields        = ['id_bagian, nama_bagian, id_biro'];
+
+	// Dates
+	protected $useTimestamps        = true;
+	protected $dateFormat           = 'datetime';
+	protected $createdField         = 'created_at';
+	protected $updatedField         = 'updated_at';
+
+	public function getBagian($id = false)
+	{
+		$builder = $this->db->table($this->table);
+		$builder->select('*');
+		$builder->join('tb_biro', 'tb_biro.id_biro = tb_bagian.id_biro');
+
+		if ($id === false) {
+			return $builder->get()->getResultArray();
+		} else {
+			return $builder->getWhere(['id_bagian' => $id])->getRowArray();
+		}
+	}
+
+	public function insertBagian($data)
+	{
+		return $this->db->table($this->table)->insert($data);
+	}
+
+	public function updateBagian($data, $id)
+	{
+		return $this->db->table($this->table)->update($data, ['id_bagian' => $id]);
+	}
+
+	public function deleteBagian($id)
+	{
+		return $this->db->table($this->table)->delete(['id_bagian' => $id]);
+	}
+}
