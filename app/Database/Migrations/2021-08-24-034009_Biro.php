@@ -9,20 +9,6 @@ class Biro extends Migration
 	public function up()
 	{
 		$this->forge->addField([
-<<<<<<< HEAD
-			'biro_id'          => [
-				'type'           => 'INT ZEROFILL',
-				'constraint'     => 2,
-				'unsigned'       => true,
-				'auto_increment' => true,
-			],
-			'biro_nama'       => [
-				'type'       => 'VARCHAR',
-				'constraint' => '100',
-			],
-		]);
-		$this->forge->addKey('biro_id', true);
-=======
 			'id_biro'          => [
 				'type'           => 'INT',
 				'constraint'	 => '2',
@@ -43,7 +29,6 @@ class Biro extends Migration
 			],
 		]);
 		$this->forge->addKey('id_biro', true);
->>>>>>> 238e53a5db9bd1afbf5cd6ca68ed3d26eaad4c47
 		$this->forge->createTable('tb_biro');
 	}
 

@@ -15,7 +15,7 @@ class Biro extends BaseController
 		$this->rules = [
 			'nama_biro' => [
 				'label'  => 'nama_biro',
-				'rules'  => 'required|required|max_length[100]',
+				'rules'  => 'required|max_length[100]',
 				'errors' => [
 					'required' => 'Nama biro tidak boleh kosong',
 					'max_length[100]' => 'Maksimal karakter adalah 100'
@@ -39,6 +39,9 @@ class Biro extends BaseController
 			'title' 	=> 'Data Master Biro',
 			'biro' 	=> $this->biro_model->getBiro($id),
 		];
+		if (empty($data['bagian'])) {
+			throw new \CodeIgniter\Exceptions\PageNotFoundException;
+		}
 		return view('/biro/detail', $data);
 	}
 
@@ -59,6 +62,7 @@ class Biro extends BaseController
 			];
 			$this->biro_model->insertBiro($data);
 			session()->setFlashdata('msg', 'Tambah data biro berhasil');
+			session()->setFlashdata('color', 'success');
 			return redirect()->to(base_url() . '/biro');
 		} else {
 			return redirect()->to(base_url() . '/biro/create')->withInput()->with('validation', $this->validation);
@@ -73,7 +77,7 @@ class Biro extends BaseController
 			'biro' 			=> $this->biro_model->getBiro($id)
 		];
 		if (empty($data['biro'])) {
-			throw new \CodeIgniter\Exceptions\PageNotFoundException('Biro dengan id ' . $id . ' tidak ditemukan ');
+			throw new \CodeIgniter\Exceptions\PageNotFoundException;
 		}
 
 		return view('biro/edit', $data);
@@ -87,6 +91,7 @@ class Biro extends BaseController
 			];
 			$this->biro_model->updateBiro($data, $id);
 			session()->setFlashdata('msg', 'Update data biro berhasil');
+			session()->setFlashdata('color', 'success');
 			return redirect()->to(base_url() . '/biro');
 		} else {
 			return redirect()->to(base_url() . '/biro/edit/' . $id)->withInput()->with('validation', $this->validation);
@@ -97,9 +102,10 @@ class Biro extends BaseController
 	{
 		if ($this->biro_model->deleteBiro($id)) {
 			session()->setFlashdata('msg', 'Hapus data biro berhasil');
+			session()->setFlashdata('color', 'success');
 			return redirect()->to(base_url() . '/biro');
 		} else {
-			throw new \CodeIgniter\Exceptions\PageNotFoundException('Biro dengan id ' . $id . ' tidak ditemukan ');
+			throw new \CodeIgniter\Exceptions\PageNotFoundException;
 		}
 	}
 }

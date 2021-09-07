@@ -9,11 +9,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-<<<<<<< HEAD
-    <title>Admin - Blog</title>
-=======
     <title><?= esc($title); ?></title>
->>>>>>> 238e53a5db9bd1afbf5cd6ca68ed3d26eaad4c47
+
 
     <!-- Custom fonts for this template-->
     <link href="<?= base_url(); ?>/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -48,7 +45,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="/">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -63,7 +60,7 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-scroll"></i>
                     <span>Under Construction</span></a>
             </li>
@@ -77,10 +74,10 @@
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Data Master</h6>
-                        <a class="collapse-item" href="utilities-color.html">Pegawai</a>
-                        <a class="collapse-item" href="utilities-color.html">Biro</a>
-                        <a class="collapse-item" href="utilities-color.html">Bagian</a>
-                        <a class="collapse-item" href="utilities-border.html">Kategori</a>
+                        <a class="collapse-item" href="/pegawai">Pegawai</a>
+                        <a class="collapse-item" href="/biro">Biro</a>
+                        <a class="collapse-item" href="/bagian">Bagian</a>
+                        <a class="collapse-item" href="/kategori">Kategori</a>
                     </div>
                 </div>
             </li>

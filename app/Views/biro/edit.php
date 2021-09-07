@@ -22,10 +22,10 @@
     <div class="card-body">
         <form action="/biro/update/<?= $biro['id_biro']; ?>" method="post">
             <?= csrf_field(); ?>
-            <div class="form-group row mb-3">
+            <div class="form-group row mb-4">
                 <label class="col-sm-2 col-lg-2">Nama Biro <span class="text-danger">*</span></label>
                 <div class="col-sm-10 col-lg-8">
-                    <input type="text" class="form-control <?= ($validation->hasError('nama_biro')) ? 'is-invalid' : ''; ?>" id="nama_biro" name="nama_biro" value="<?= $biro['nama_biro']; ?>" placeholder="tuliskan nama biro">
+                    <input type="text" class="form-control <?= ($validation->hasError('nama_biro')) ? 'is-invalid' : ''; ?>" id="nama_biro" name="nama_biro" value="<?= $biro['nama_biro']; ?>" placeholder="Tuliskan nama biro">
                     <div class="invalid-feedback">
                         <?= $validation->getError('nama_biro'); ?>
                     </div>

@@ -29,6 +29,17 @@ class Bagian_model extends Model
 		}
 	}
 
+	public function generateId($idBiro)
+	{
+		// Ambil max id bagian
+		$builder = $this->db->table($this->table);
+		$maxIdBagian = substr($builder->selectMax('id_bagian')->getWhere(['id_biro' => $idBiro])->getRowArray()['id_bagian'], -2);
+
+		$idBaru = sprintf("%02d", $idBiro) . sprintf("%02d", $maxIdBagian + 1);
+
+		return $idBaru;
+	}
+
 	public function insertBagian($data)
 	{
 		return $this->db->table($this->table)->insert($data);

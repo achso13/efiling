@@ -18,7 +18,7 @@
     </div>
     <div class="card-body">
         <?php if (session()->getFlashdata('msg')) : ?>
-            <div class="alert alert-success" role="alert">
+            <div class="alert alert-<?= session()->getFlashdata('color'); ?>" role="alert">
                 <?= session()->getFlashdata('msg'); ?>
             </div>
         <?php endif; ?>
@@ -33,32 +33,35 @@
                     </tr>
                 </thead>
                 <tbody>
+
                     <?php
-                    $no = 1;
-                    foreach ($listBiro as $biro) :
-                        ?>
-                        <tr>
-                            <td class="text-center"><?= $no; ?></td>
-                            <td><?= $biro['nama_biro']; ?></td>
-                            <td class="text-center text-nowrap">
-                                <a href="/biro/<?= $biro['id_biro']; ?>" class="btn btn-sm btn-success">
-                                    <i class="fas fa-search-plus"></i>
-                                </a>
-                                <a href="/biro/edit/<?= $biro['id_biro']; ?>" class="btn btn-sm btn-warning">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                                <form action="/biro/<?= $biro['id_biro']; ?>" method="post" class="d-inline">
-                                    <?= csrf_field() ?>
-                                    <input type="hidden" name="_method" value="DELETE">
-                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Hapus data?')">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
+                    if (!empty($listBiro)) :
+                        $no = 1;
+                        foreach ($listBiro as $biro) :
+                            ?>
+                            <tr>
+                                <td class="text-center"><?= $no; ?></td>
+                                <td><?= $biro['nama_biro']; ?></td>
+                                <td class="text-center text-nowrap">
+                                    <a href="/biro/<?= $biro['id_biro']; ?>" class="btn btn-sm btn-success">
+                                        <i class="fas fa-search-plus"></i>
+                                    </a>
+                                    <a href="/biro/edit/<?= $biro['id_biro']; ?>" class="btn btn-sm btn-warning">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <form action="/biro/<?= $biro['id_biro']; ?>" method="post" class="d-inline">
+                                        <?= csrf_field() ?>
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Hapus data?')">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
                     <?php
-                        $no++;
-                    endforeach;
+                            $no++;
+                        endforeach;
+                    endif;
                     ?>
                 </tbody>
             </table>
