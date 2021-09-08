@@ -42,22 +42,19 @@
 </div>
 
 <!-- Bootstrap core JavaScript-->
-<script src="<?= base_url(); ?>/vendor/jquery/jquery.min.js"></script>
-<script src="<?= base_url(); ?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="<?= base_url(); ?>/plugin/jquery/jquery.min.js"></script>
+<script src="<?= base_url(); ?>/plugin/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Core plugin JavaScript-->
-<script src="<?= base_url(); ?>/vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="<?= base_url(); ?>/plugin/jquery-easing/jquery.easing.min.js"></script>
 
 <!-- Custom scripts for all pages-->
 <script src="<?= base_url(); ?>/js/sb-admin-2.min.js"></script>
 
-<<<<<<< HEAD
-=======
 <!-- Datatables Call -->
-<script src="<?= base_url(); ?>/vendor/datatables/jquery.dataTables.min.js"></script>
-<script src="<?= base_url(); ?>/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="<?= base_url(); ?>/plugin/datatables/jquery.dataTables.min.js"></script>
+<script src="<?= base_url(); ?>/plugin/datatables/dataTables.bootstrap4.min.js"></script>
 <script src="<?= base_url(); ?>/js/demo/datatables-demo.js"></script>
->>>>>>> 238e53a5db9bd1afbf5cd6ca68ed3d26eaad4c47
 </body>
 
 </html>

@@ -40,4 +40,25 @@ class Validation
 	//--------------------------------------------------------------------
 	// Rules
 	//--------------------------------------------------------------------
+	public $biroRules = [
+		'nama_biro' => [
+			'label'  => 'Nama biro',
+			'rules'  => 'required|max_length[100]',
+			'errors' => [
+				'required' => '{field} tidak boleh kosong',
+				'max_length' => '{field} terlalu panjang, maksimal memiliki {param} karakter'
+			]
+		],
+	];
+
+	public $bagianRules = [
+		'nama_bagian' => [
+			'label'  => 'Nama bagian',
+			'rules'  => 'required|max_length[100]',
+			'errors' => [
+				'required' => '{field} tidak boleh kosong',
+				'max_length' => '{field} terlalu panjang, maksimal memiliki {param} karakter'
+			]
+		],
+	];
 }

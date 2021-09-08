@@ -23,7 +23,7 @@
         <form action="/bagian/update/<?= $bagian['id_bagian']; ?>" method="post">
             <?= csrf_field(); ?>
             <div class="form-group row mb-4">
-                <label class="col-sm-2 col-lg-2">Nama Biro<span class="text-danger">*</span></label>
+                <label for="nama_biro" class="col-sm-2 col-lg-2">Nama Biro<span class="text-danger">*</span></label>
                 <div class="col-sm-10 col-lg-8">
                     <select class="form-control <?= ($validation->hasError('nama_biro')) ? 'is-invalid' : ''; ?>" name="nama_biro">
                         <?php foreach ($listBiro as $biro) : ?>
@@ -37,7 +37,7 @@
             </div>
 
             <div class="form-group row mb-4">
-                <label class="col-sm-2 col-lg-2">Nama Bagian<span class="text-danger">*</span></label>
+                <label for="nama_bagian" class="col-sm-2 col-lg-2">Nama Bagian<span class="text-danger">*</span></label>
                 <div class="col-sm-10 col-lg-8">
                     <input type="text" class="form-control <?= ($validation->hasError('nama_bagian')) ? 'is-invalid' : ''; ?>" id="nama_bagian" name="nama_bagian" value="<?= $bagian['nama_bagian']; ?>" placeholder="Tuliskan nama bagian">
                     <div class="invalid-feedback">

@@ -39,7 +39,7 @@ class Biro extends BaseController
 			'title' 	=> 'Data Master Biro',
 			'biro' 	=> $this->biro_model->getBiro($id),
 		];
-		if (empty($data['bagian'])) {
+		if (empty($data['biro'])) {
 			throw new \CodeIgniter\Exceptions\PageNotFoundException;
 		}
 		return view('/biro/detail', $data);
@@ -56,10 +56,10 @@ class Biro extends BaseController
 
 	public function store()
 	{
-		if ($this->validate($this->rules)) {
-			$data = [
-				'nama_biro' => $this->request->getPost('nama_biro'),
-			];
+		$data = [
+			'nama_biro' => $this->request->getPost('nama_biro'),
+		];
+		if ($this->validation->run($data, 'biroRules')) {
 			$this->biro_model->insertBiro($data);
 			session()->setFlashdata('msg', 'Tambah data biro berhasil');
 			session()->setFlashdata('color', 'success');
@@ -85,10 +85,10 @@ class Biro extends BaseController
 
 	public function update($id)
 	{
-		if ($this->validate($this->rules)) {
-			$data = [
-				'nama_biro' => $this->request->getPost('nama_biro'),
-			];
+		$data = [
+			'nama_biro' => $this->request->getPost('nama_biro'),
+		];
+		if ($this->validation->run($data, 'biroRules')) {
 			$this->biro_model->updateBiro($data, $id);
 			session()->setFlashdata('msg', 'Update data biro berhasil');
 			session()->setFlashdata('color', 'success');

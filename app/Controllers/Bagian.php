@@ -15,14 +15,6 @@ class Bagian extends BaseController
 
 		$this->validation = \Config\Services::validation();
 		$this->rules = [
-			'nama_biro' => [
-				'label'  => 'nama_biro',
-				'rules'  => 'required|max_length[100]',
-				'errors' => [
-					'required' => 'Nama biro tidak boleh kosong',
-					'max_length[100]' => 'Maksimal karakter adalah 100'
-				]
-			],
 			'nama_bagian' => [
 				'label'  => 'nama_bagian',
 				'rules'  => 'required|max_length[100]',
@@ -61,33 +53,32 @@ class Bagian extends BaseController
 		$data = [
 			'title' 		=> 'Tambah Data Master Bagian',
 			'validation' 	=> $this->validation,
-			'listBiro'			=> $this->biro_model->getBiro()
+			'listBiro'		=> $this->biro_model->getBiro()
 		];
 		return view('/bagian/create', $data);
 	}
 
 	public function store()
 	{
-		if ($this->validate($this->rules)) {
-			$biro = $this->biro_model->getBiroByName($this->request->getPost('nama_biro'));
-			if (!empty($biro)) {
-				$data = [
-					'id_bagian' => $this->bagian_model->generateId($biro['id_biro']),
-					'id_biro' => $biro['id_biro'],
-					'nama_bagian' => $this->request->getPost('nama_bagian')
-				];
-
+		$biro = $this->biro_model->getBiroByName($this->request->getPost('nama_biro'));
+		if (!empty($biro)) {
+			$data = [
+				'id_bagian' => $this->bagian_model->generateId($biro['id_biro']),
+				'id_biro' => $biro['id_biro'],
+				'nama_bagian' => $this->request->getPost('nama_bagian')
+			];
+			if ($this->validation->run($data, 'bagianRules')) {
 				$this->bagian_model->insertBagian($data);
 				session()->setFlashdata('msg', 'Tambah data bagian berhasil');
 				session()->setFlashdata('color', 'success');
 			} else {
-				session()->setFlashdata('msg', 'Tambah data bagian gagal');
-				session()->setFlashdata('color', 'danger');
+				return redirect()->to(base_url() . '/bagian/create')->withInput()->with('validation', $this->validation);
 			}
-			return redirect()->to(base_url() . '/bagian');
 		} else {
-			return redirect()->to(base_url() . '/bagian/create')->withInput()->with('validation', $this->validation);
+			session()->setFlashdata('msg', 'Tambah data bagian gagal');
+			session()->setFlashdata('color', 'danger');
 		}
+		return redirect()->to(base_url() . '/bagian');
 	}
 
 	public function edit($id)
@@ -107,30 +98,31 @@ class Bagian extends BaseController
 
 	public function update($id)
 	{
-		if ($this->validate($this->rules)) {
-			$biro = $this->biro_model->getBiroByName($this->request->getPost('nama_biro'));
-			if (!empty($biro)) {
-				$data = [
-					'id_biro' => $biro['id_biro'],
-					'nama_bagian' => $this->request->getPost('nama_bagian')
-				];
-				$this->biro_model->updateBiro($data, $id);
+		$biro = $this->biro_model->getBiroByName($this->request->getPost('nama_biro'));
+		if (!empty($biro)) {
+			$data = [
+				'id_biro' => $biro['id_biro'],
+				'nama_bagian' => $this->request->getPost('nama_bagian')
+			];
+			if ($this->validation->run($data, 'bagianRules')) {
+				$this->bagian_model->updateBagian($data, $id);
 				session()->setFlashdata('msg', 'Update data bagian berhasil');
 				session()->setFlashdata('color', 'success');
 			} else {
-				session()->setFlashdata('msg', 'Update data bagian gagal');
-				session()->setFlashdata('color', 'danger');
+				return redirect()->to(base_url() . '/bagian/edit/' . $id)->withInput()->with('validation', $this->validation);
 			}
-			return redirect()->to(base_url() . '/bagian');
 		} else {
-			return redirect()->to(base_url() . '/bagian/edit/' . $id)->withInput()->with('validation', $this->validation);
+			session()->setFlashdata('msg', 'Update data bagian gagal');
+			session()->setFlashdata('color', 'danger');
 		}
+		return redirect()->to(base_url() . '/bagian');
 	}
 
 	public function delete($id)
 	{
-		if ($this->bagian_model->deleteBiro($id)) {
+		if ($this->bagian_model->deleteBagian($id)) {
 			session()->setFlashdata('msg', 'Hapus data bagian berhasil');
+			session()->setFlashdata('color', 'success');
 			return redirect()->to(base_url() . '/bagian');
 		} else {
 			throw new \CodeIgniter\Exceptions\PageNotFoundException;
