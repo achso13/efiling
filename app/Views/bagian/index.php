@@ -35,34 +35,32 @@
                 </thead>
                 <tbody>
                     <?php
-                    if (!empty($listBagian)) :
-                        $no = 1;
-                        foreach ($listBagian as $bagian) :
-                            ?>
-                            <tr>
-                                <td class="text-center"><?= $no; ?></td>
-                                <td><?= $bagian['nama_bagian']; ?></td>
-                                <td><?= $bagian['nama_biro']; ?></td>
-                                <td class="text-center text-nowrap">
-                                    <a href="/bagian/<?= $bagian['id_bagian']; ?>" class="btn btn-sm btn-success">
-                                        <i class="fas fa-search-plus"></i>
-                                    </a>
-                                    <a href="/bagian/edit/<?= $bagian['id_bagian']; ?>" class="btn btn-sm btn-warning">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-                                    <form action="/bagian/<?= $bagian['id_bagian']; ?>" method="post" class="d-inline">
-                                        <?= csrf_field() ?>
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Hapus data?')">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
+                    $no = 1;
+                    foreach ($listBagian as $bagian) :
+                        ?>
+                        <tr>
+                            <td class="text-center"><?= $no; ?></td>
+                            <td><?= $bagian['nama_bagian']; ?></td>
+                            <td><?= $bagian['nama_biro']; ?></td>
+                            <td class="text-center text-nowrap">
+                                <a href="/bagian/<?= $bagian['id_bagian']; ?>" class="btn btn-sm btn-success">
+                                    <i class="fas fa-search-plus"></i>
+                                </a>
+                                <a href="/bagian/edit/<?= $bagian['id_bagian']; ?>" class="btn btn-sm btn-warning">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <form action="/bagian/<?= $bagian['id_bagian']; ?>" method="post" class="d-inline">
+                                    <?= csrf_field() ?>
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Hapus data?')">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
                     <?php
-                            $no++;
-                        endforeach;
-                    endif;
+                        $no++;
+                    endforeach;
                     ?>
                 </tbody>
             </table>

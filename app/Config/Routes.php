@@ -55,6 +55,16 @@ $routes->post('/bagian/update/(:alphanum)', 'Bagian::update/$1');
 
 $routes->delete('/bagian/(:alphanum)', 'Bagian::delete/$1');
 
+// Route Pegawai
+$routes->get('/pegawai', 'Pegawai::index');
+$routes->get('/pegawai/create', 'Pegawai::create');
+$routes->get('/pegawai/edit/(:alphanum)', 'Pegawai::edit/$1');
+$routes->get('/pegawai/(:alphanum)', 'Pegawai::detail/$1');
+
+$routes->post('/pegawai/store', 'Pegawai::store');
+$routes->post('/pegawai/update/(:alphanum)', 'Pegawai::update/$1');
+
+$routes->delete('/pegawai/(:alphanum)', 'Pegawai::delete/$1');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
