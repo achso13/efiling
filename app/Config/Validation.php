@@ -26,6 +26,7 @@ class Validation
 		FormatRules::class,
 		FileRules::class,
 		CreditCardRules::class,
+		\App\Validation\Rules::class,
 	];
 
 	/**
@@ -60,6 +61,33 @@ class Validation
 			'errors' => [
 				'required' => '{field} tidak boleh kosong',
 				'max_length' => '{field} terlalu panjang, maksimal memiliki {param} karakter'
+			]
+		],
+		'id_biro' => [
+			'label'  => 'Biro',
+			'rules'  => 'required|in_db[tb_biro.id_biro]',
+			'errors' => [
+				'required' 	=> 'Anda belum memilih {field}',
+				'in_db' 	=>	'Value tidak diizinkan',
+			]
+		],
+	];
+
+	public $pegawaiRules = [
+		'id_biro' => [
+			'label'  => 'Biro',
+			'rules'  => 'required|in_db[tb_biro.id_biro]',
+			'errors' => [
+				'required' 	=> 'Anda belum memilih {field}',
+				'in_db' 	=>	'Value tidak diizinkan',
+			]
+		],
+		'id_bagian' => [
+			'label'  => 'Bagian',
+			'rules'  => 'required|in_db[tb_bagian.id_bagian]',
+			'errors' => [
+				'required' 	=> 'Anda belum memilih {field}',
+				'in_db' 	=>	'Value tidak diizinkan',
 			]
 		],
 	];

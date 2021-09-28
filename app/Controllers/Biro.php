@@ -12,16 +12,6 @@ class Biro extends BaseController
 		$this->biro_model = new Biro_model();
 
 		$this->validation = \Config\Services::validation();
-		$this->rules = [
-			'nama_biro' => [
-				'label'  => 'nama_biro',
-				'rules'  => 'required|max_length[100]',
-				'errors' => [
-					'required' => 'Nama biro tidak boleh kosong',
-					'max_length[100]' => 'Maksimal karakter adalah 100'
-				]
-			],
-		];
 	}
 
 	public function index()

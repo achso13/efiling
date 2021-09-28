@@ -23,15 +23,16 @@
         <form action="/bagian/update/<?= $bagian['id_bagian']; ?>" method="post">
             <?= csrf_field(); ?>
             <div class="form-group row mb-4">
-                <label for="nama_biro" class="col-sm-2 col-lg-2">Nama Biro<span class="text-danger">*</span></label>
+                <label for="biro" class="col-sm-2 col-lg-2">Nama Biro <span class="text-danger">*</span></label>
                 <div class="col-sm-10 col-lg-8">
-                    <select class="form-control <?= ($validation->hasError('nama_biro')) ? 'is-invalid' : ''; ?>" name="nama_biro">
+                    <select class="custom-select <?= ($validation->hasError('id_biro')) ? 'is-invalid' : ''; ?>" name="biro">
+                        <option value="">Pilih Biro</option>
                         <?php foreach ($listBiro as $biro) : ?>
-                            <option value="<?= $biro['nama_biro']; ?>" <?= $bagian['id_biro'] === $biro['id_biro'] ? 'selected' : ''; ?>><?= $biro['nama_biro'] ?></option>
+                            <option value="<?= $biro['id_biro']; ?>" <?= $bagian['id_biro'] === $biro['id_biro'] ? 'selected' : ''; ?>><?= $biro['nama_biro'] ?></option>
                         <?php endforeach; ?>
                     </select>
                     <div class="invalid-feedback">
-                        <?= $validation->getError('nama_biro'); ?>
+                        <?= $validation->getError('id_biro'); ?>
                     </div>
                 </div>
             </div>

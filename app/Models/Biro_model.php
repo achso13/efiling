@@ -24,13 +24,6 @@ class Biro_model extends Model
 		}
 	}
 
-	public function getBiroByName($nama_biro)
-	{
-		$builder = $this->db->table($this->table);
-		$builder->select('*');
-		return $builder->getWhere(['nama_biro' => $nama_biro])->getRowArray();
-	}
-
 	public function insertBiro($data)
 	{
 		return $this->db->table($this->table)->insert($data);

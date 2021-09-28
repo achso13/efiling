@@ -21,7 +21,7 @@
         <form action="/biro/store" method="post">
             <?= csrf_field(); ?>
             <div class="form-group row mb-4">
-                <label class="col-sm-2 col-lg-2">Nama Biro<span class="text-danger">*</span></label>
+                <label class="col-sm-2 col-lg-2">Nama Biro <span class="text-danger">*</span></label>
                 <div class="col-sm-10 col-lg-8">
                     <input type="text" class="form-control <?= ($validation->hasError('nama_biro')) ? 'is-invalid' : ''; ?>" name="nama_biro" value="<?= old('nama_biro'); ?>" placeholder="Tuliskan nama biro">
                     <div class="invalid-feedback">

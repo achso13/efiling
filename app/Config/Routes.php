@@ -48,8 +48,10 @@ $routes->delete('/biro/(:alphanum)', 'Biro::delete/$1');
 $routes->get('/bagian', 'Bagian::index');
 $routes->get('/bagian/create', 'Bagian::create');
 $routes->get('/bagian/edit/(:alphanum)', 'Bagian::edit/$1');
+$routes->post('/bagian/action', 'Bagian::ajaxbagian');
 $routes->get('/bagian/(:alphanum)', 'Bagian::detail/$1');
 
+$routes->get('/bagian/action', 'Bagian::ajaxbagian');
 $routes->post('/bagian/store', 'Bagian::store');
 $routes->post('/bagian/update/(:alphanum)', 'Bagian::update/$1');
 

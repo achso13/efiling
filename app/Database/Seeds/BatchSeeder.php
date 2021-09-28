@@ -10,5 +10,6 @@ class BatchSeeder extends Seeder
 	{
 		$this->call('BiroSeeder');
 		$this->call('BagianSeeder');
+		$this->call('PegawaiSeeder');
 	}
 }

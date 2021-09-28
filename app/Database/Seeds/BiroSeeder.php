@@ -11,7 +11,7 @@ class BiroSeeder extends Seeder
 	{
 		$data = [
 			[
-				'nama_biro' => 'Sekretaris Jendral',
+				'nama_biro' => 'Sekretaris Jenderal',
 				'created_at'    => Time::now(),
 				'updated_at'    => Time::now(),
 			],

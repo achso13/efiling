@@ -16,7 +16,6 @@ class Pegawai extends Migration
 			'nama_pegawai'    => [
 				'type'       	 => 'VARCHAR',
 				'constraint' 	 => '255',
-				'null' 		 	 => true,
 			],
 			'jenis_kelamin'  => [
 				'type'        	 => 'ENUM',
@@ -40,6 +39,10 @@ class Pegawai extends Migration
 				'type'           => 'VARCHAR',
 				'constraint'	 => '255',
 				'default'        => 'default.png',
+			],
+			'id_bagian'          => [
+				'type'           => 'VARCHAR',
+				'constraint'     => '4',
 			],
 			'created_at'    => [
 				'type'      => 'DATETIME',
