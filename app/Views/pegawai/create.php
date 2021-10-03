@@ -20,7 +20,7 @@
         <h6 class="m-0 font-weight-bold text-primary">Pegawai</h6>
     </div>
     <div class="card-body">
-        <form action="/pegawai/store" method="post">
+        <form action="/pegawai/store" method="post" enctype="multipart/form-data">
             <?= csrf_field(); ?>
             <div class="form-group row mb-4">
                 <label for="nip" class="col-sm-2 col-lg-2">NIP <span class="text-danger">*</span></label>
@@ -28,6 +28,15 @@
                     <input type="text" class="form-control <?= ($validation->hasError('nip')) ? 'is-invalid' : ''; ?>" id="nip" name="nip" value="<?= old('nip'); ?>" placeholder="Tuliskan nip pegawai">
                     <div class="invalid-feedback">
                         <?= $validation->getError('nip'); ?>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row mb-4">
+                <label for="nama_pegawai" class="col-sm-2 col-lg-2">Nama Pegawai <span class="text-danger">*</span></label>
+                <div class="col-sm-10 col-lg-8">
+                    <input type="text" class="form-control <?= ($validation->hasError('nama_pegawai')) ? 'is-invalid' : ''; ?>" id="nama_pegawai" name="nama_pegawai" value="<?= old('nama_pegawai'); ?>" placeholder="Tuliskan nama pegawai">
+                    <div class="invalid-feedback">
+                        <?= $validation->getError('nama_pegawai'); ?>
                     </div>
                 </div>
             </div>
@@ -41,38 +50,20 @@
                 </div>
             </div>
             <div class="form-group row mb-4">
-                <label for="role" class="col-sm-2 col-lg-2">Role Pegawai <span class="text-danger">*</span></label>
-                <div class="col-sm-10 col-lg-8">
-                    <select class="form-control" name="role">
-                        <option value="Admin" <?= old('role') == "Admin" ? 'selected' : ''; ?>>Admin</option>
-                        <option value="Pegawai" <?= old('role') == "Pegawai" ? 'selected' : ''; ?>>Pegawai</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group row mb-4">
-                <label for="nama_pegawai" class="col-sm-2 col-lg-2">Nama Pegawai <span class="text-danger">*</span></label>
-                <div class="col-sm-10 col-lg-8">
-                    <input type="text" class="form-control <?= ($validation->hasError('nama_pegawai')) ? 'is-invalid' : ''; ?>" id="nama_pegawai" name="nama_pegawai" value="<?= old('nama_pegawai'); ?>" placeholder="Tuliskan nama pegawai">
-                    <div class="invalid-feedback">
-                        <?= $validation->getError('nama_pegawai'); ?>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group row mb-4">
-                <label for="jenis_kelamin" class="col-sm-2 col-lg-2">Jenis Kelamin <span class="text-danger">*</span></label>
-                <div class="col-sm-10 col-lg-8">
-                    <select class="form-control" name="jenis_kelamin">
-                        <option value="L" <?= old('jenis_kelamin') == "L" ? 'selected' : ''; ?>>Laki-laki</option>
-                        <option value="P" <?= old('jenis_kelamin') == "P" ? 'selected' : ''; ?>>Perempuan</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group row mb-4">
                 <label for="email" class="col-sm-2 col-lg-2">Email <span class="text-danger">*</span></label>
                 <div class="col-sm-10 col-lg-8">
                     <input type="text" class="form-control <?= ($validation->hasError('email')) ? 'is-invalid' : ''; ?>" id="email" name="email" value="<?= old('email'); ?>" placeholder="Tuliskan email pegawai">
                     <div class="invalid-feedback">
                         <?= $validation->getError('email'); ?>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row mb-4">
+                <label for="alamat" class="col-sm-2 col-lg-2">Alamat <span class="text-danger">*</span></label>
+                <div class="col-sm-10 col-lg-8">
+                    <input type="text" class="form-control <?= ($validation->hasError('alamat')) ? 'is-invalid' : ''; ?>" id="alamat" name="alamat" value="<?= old('alamat'); ?>" placeholder="Tuliskan alamat pegawai">
+                    <div class="invalid-feedback">
+                        <?= $validation->getError('alamat'); ?>
                     </div>
                 </div>
             </div>
@@ -98,6 +89,36 @@
                     </select>
                     <div class="invalid-feedback">
                         <?= $validation->getError('id_bagian'); ?>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row mb-4">
+                <label for="role" class="col-sm-2 col-lg-2">Role Pegawai <span class="text-danger">*</span></label>
+                <div class="col-sm-10 col-lg-8">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="role" id="jk1" value="Admin" <?= old('role') == "Admin" ? 'checked' : ''; ?> checked>
+                        <label class="form-check-label" for="jk1">
+                            Admin
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="role" id="jk2" value="Pegawai" <?= old('role') == "Pegawai" ? 'checked' : ''; ?>>
+                        <label class="form-check-label" for="jk2">
+                            Pegawai
+                        </label>
+                        <div class="invalid-feedback">
+                            <?= $validation->getError('role'); ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row mb-4">
+                <label class="col-sm-2 col-lg-2">Foto</label>
+                <div class="col-sm-10 col-lg-8">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input <?= ($validation->hasError('foto')) ? 'is-invalid' : ''; ?>" id="foto" value="<?= old('foto'); ?>" name="foto">
+                        <label class="custom-file-label" for="foto">Pilih foto</label>
+                        <div class="invalid-feedback"><?= $validation->getError('foto'); ?></div>
                     </div>
                 </div>
             </div>

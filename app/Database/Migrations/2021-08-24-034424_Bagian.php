@@ -12,6 +12,7 @@ class Bagian extends Migration
 			'id_bagian'          => [
 				'type'           => 'VARCHAR',
 				'constraint'     => '4',
+				'unique'         => true,
 			],
 			'nama_bagian'       => [
 				'type'       => 'VARCHAR',
@@ -23,15 +24,6 @@ class Bagian extends Migration
 				'constraint'	 => '2',
 				'unsigned'       => true,
 			],
-			'created_at'    => [
-				'type'      => 'DATETIME',
-				'null'		=> true,
-			],
-			'updated_at'    => [
-				'type'      => 'DATETIME',
-				'null'		=> true,
-			],
-
 		]);
 		$this->forge->addKey('id_bagian', true);
 		$this->forge->addForeignKey('id_biro', 'tb_biro', 'id_biro', 'CASCADE', 'CASCADE');

@@ -14,18 +14,11 @@ class Biro extends Migration
 				'constraint'	 => '2',
 				'auto_increment' => true,
 				'unsigned'       => true,
+				'unique'		=> true
 			],
 			'nama_biro'      => [
 				'type'       => 'VARCHAR',
 				'constraint' => '100',
-			],
-			'created_at'    => [
-				'type'      => 'DATETIME',
-				'null'		=> true,
-			],
-			'updated_at'    => [
-				'type'      => 'DATETIME',
-				'null'		=> true,
 			],
 		]);
 		$this->forge->addKey('id_biro', true);

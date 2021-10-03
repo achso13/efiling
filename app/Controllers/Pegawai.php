@@ -3,8 +3,8 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\Pegawai_model;
 use App\Models\Biro_model;
+use App\Models\Pegawai_model;
 
 class Pegawai extends BaseController
 {
@@ -49,6 +49,11 @@ class Pegawai extends BaseController
 
 	public function store()
 	{
+		// Ambil variabel foto
+		$foto = $this->request->getFile('foto');
+		// Ambil nama foto
+		$namaFoto = $foto->getError() === 4 ? "default.png" : $foto->getRandomName();
+
 		$data = [
 			'nip' => $this->request->getPost('nip'),
 			'password' => $this->request->getPost('password'),
@@ -58,14 +63,21 @@ class Pegawai extends BaseController
 			'email' => $this->request->getPost('email'),
 			'id_biro' => $this->request->getPost('biro'),
 			'id_bagian' => $this->request->getPost('bagian'),
+			'foto' => $namaFoto
 		];
+
 		if ($this->validation->run($data, 'pegawaiRules')) {
-			$this->biro_model->insertBiro($data);
+			unset($data['id_biro']);
+			if ($foto->getError() !== 4) {
+				$foto->move(ROOTPATH . 'public/uploads/profile_img', $namaFoto);
+			}
+			$this->pegawai_model->insertPegawai($data);
 			session()->setFlashdata('msg', 'Tambah data pegawai berhasil');
 			session()->setFlashdata('color', 'success');
 			return redirect()->to(base_url() . '/pegawai');
 		} else {
-			return redirect()->to(base_url() . '/pegawai/create')->withInput()->with('validation', $this->validation);
+			// return redirect()->to(base_url() . '/pegawai/create')->withInput()->with('validation', $this->validation);
+			return redirect()->to(base_url() . '/pegawai/create')->withInput();
 		}
 	}
 }

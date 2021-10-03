@@ -12,45 +12,44 @@ class Pegawai extends Migration
 			'nip' 			  => [
 				'type'           => 'VARCHAR',
 				'constraint'     => '18',
+				'unique'         => true,
 			],
 			'nama_pegawai'    => [
 				'type'       	 => 'VARCHAR',
-				'constraint' 	 => '255',
-			],
-			'jenis_kelamin'  => [
-				'type'        	 => 'ENUM',
-				'constraint'  	 => ['L', 'P'],
-				'default'     	 => 'L',
-			],
-			'email'          => [
-				'type'           => 'VARCHAR',
-				'constraint'	 => '255',
+				'constraint' 	 => '128',
 			],
 			'password'          => [
 				'type'           => 'VARCHAR',
-				'constraint'	 => '255',
+				'constraint'	 => '128',
 			],
-			'role'          => [
-				'type'           => 'ENUM',
-				'constraint'	 => ['Admin', 'Pegawai'],
-				'default'        => 'Pegawai',
+			'tgl_lahir' => [
+				'type'           => 'DATE',
 			],
-			'foto'          => [
+			'alamat' => [
 				'type'           => 'VARCHAR',
 				'constraint'	 => '255',
-				'default'        => 'default.png',
+			],
+			'no_telp' => [
+				'type'           => 'varchar',
+				'constraint'	 => '32',
+			],
+			'email'          => [
+				'type'           => 'VARCHAR',
+				'constraint'	 => '128',
 			],
 			'id_bagian'          => [
 				'type'           => 'VARCHAR',
 				'constraint'     => '4',
 			],
-			'created_at'    => [
-				'type'      => 'DATETIME',
-				'null'		=> true,
+			'foto'          => [
+				'type'           => 'VARCHAR',
+				'constraint'	 => '128',
+				'default'        => 'default.png',
 			],
-			'updated_at'    => [
-				'type'      => 'DATETIME',
-				'null'		=> true,
+			'role'          => [
+				'type'           => 'ENUM',
+				'constraint'	 => ['Admin', 'Pegawai'],
+				'default'        => 'Pegawai',
 			],
 		]);
 		$this->forge->addKey('nip', true);

@@ -10,11 +10,6 @@ class Biro_model extends Model
 	protected $primaryKey           = 'id_biro';
 	protected $allowedFields        = ['nama_biro'];
 
-	// Dates
-	protected $useTimestamps        = true;
-	protected $createdField         = 'created_at';
-	protected $updatedField         = 'updated_at';
-
 	public function getBiro($id = false)
 	{
 		if ($id === false) {

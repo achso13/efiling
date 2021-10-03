@@ -55,7 +55,7 @@ class Biro extends BaseController
 			session()->setFlashdata('color', 'success');
 			return redirect()->to(base_url() . '/biro');
 		} else {
-			return redirect()->to(base_url() . '/biro/create')->withInput()->with('validation', $this->validation);
+			return redirect()->to(base_url() . '/biro/create')->withInput();
 		}
 	}
 
@@ -84,7 +84,7 @@ class Biro extends BaseController
 			session()->setFlashdata('color', 'success');
 			return redirect()->to(base_url() . '/biro');
 		} else {
-			return redirect()->to(base_url() . '/biro/edit/' . $id)->withInput()->with('validation', $this->validation);
+			return redirect()->to(base_url() . '/biro/edit/' . $id)->withInput();
 		}
 	}
 

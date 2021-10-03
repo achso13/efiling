@@ -34,10 +34,6 @@
                         <td><?= $pegawai['nama_pegawai']; ?></td>
                     </tr>
                     <tr>
-                        <td>Jenis Kelamin</td>
-                        <td><?= $pegawai['jenis_kelamin']; ?></td>
-                    </tr>
-                    <tr>
                         <td>Biro</td>
                         <td><?= $pegawai['nama_biro']; ?></td>
                     </tr>

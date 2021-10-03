@@ -10,16 +10,16 @@ class PegawaiSeeder extends Seeder
 	public function run()
 	{
 		$data = [
-			'nip' 			=> '12345',
-			'nama_pegawai' 	=> 'Pegawai Test',
-			'jenis_kelamin'	=> 'L',
-			'email'    		=> 'testpegawai@gmail.com',
-			'password'    	=> password_hash('12345', PASSWORD_DEFAULT),
-			'role'    		=> 'Admin',
-			'foto'    		=> 'default.png',
+			'nip' 			=> '1810512094',
+			'nama_pegawai' 	=> 'Achmad Solehuddin',
+			'password'    	=> password_hash('03202485', PASSWORD_DEFAULT),
+			'tgl_lahir'		=> '07-29-1999',
+			'alamat'		=> 'Tanah Baru, Depok',
+			'no_telp'		=> '085156879802',
+			'email'    		=> 'achmads@upnvj.ac.id',
 			'id_bagian'		=> '0101',
-			'created_at'    => Time::now(),
-			'updated_at'    => Time::now(),
+			'foto'    		=> 'default.png',
+			'role'    		=> 'Admin',
 		];
 
 		$this->db->table('tb_pegawai')->insert($data);

@@ -7,14 +7,9 @@ use CodeIgniter\Model;
 class Bagian_model extends Model
 {
 	protected $table                = 'tb_bagian';
-	protected $primaryKey           = 'id_bagian';
-	protected $allowedFields        = ['id_bagian, nama_bagian, id_biro'];
-
-	// Dates
+	protected $primaryKey			= 'id_bagian';
+	protected $allowedFields        = ['nama_bagian, id_biro'];
 	protected $useTimestamps        = true;
-	protected $dateFormat           = 'datetime';
-	protected $createdField         = 'created_at';
-	protected $updatedField         = 'updated_at';
 
 	public function getBagian($id = false)
 	{

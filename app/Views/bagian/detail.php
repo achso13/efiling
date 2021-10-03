@@ -33,14 +33,6 @@
                         <td>Nama Biro</td>
                         <td><?= $bagian['nama_biro']; ?></td>
                     </tr>
-                    <tr>
-                        <td>Created At</td>
-                        <td><?= empty($bagian['created_at']) ? '(not set)' : $bagian['created_at']; ?></td>
-                    </tr>
-                    <tr>
-                        <td>Updated At</td>
-                        <td><?= empty($bagian['updated_at']) ? '(not set)' : $bagian['updated_at']; ?></td>
-                    </tr>
                 </tbody>
             </table>
         </div>

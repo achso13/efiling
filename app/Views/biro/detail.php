@@ -29,14 +29,6 @@
                         <td>Nama Biro</td>
                         <td><?= $biro['nama_biro']; ?></td>
                     </tr>
-                    <tr>
-                        <td>Created At</td>
-                        <td><?= empty($biro['created_at']) ? '(not set)' : $biro['created_at']; ?></td>
-                    </tr>
-                    <tr>
-                        <td>Updated At</td>
-                        <td><?= empty($biro['updated_at']) ? '(not set)' : $biro['updated_at']; ?></td>
-                    </tr>
                 </tbody>
             </table>
         </div>

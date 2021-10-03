@@ -50,21 +50,17 @@ class Bagian extends BaseController
 	public function store()
 	{
 		$data = [
-			'id_biro' => $this->request->getPost('biro'),
-			'nama_bagian' => $this->request->getPost('nama_bagian')
+			'id_biro' => $this->request->getVar('biro'),
+			'nama_bagian' => $this->request->getVar('nama_bagian')
 		];
 		if ($this->validation->run($data, 'bagianRules')) {
-			$data['id_bagian'] = $this->bagian_model->generateId($this->request->getPost('biro'));
-			if ($this->bagian_model->insertBagian($data)) {
-				session()->setFlashdata('msg', 'Tambah data bagian berhasil');
-				session()->setFlashdata('color', 'success');
-			} else {
-				session()->setFlashdata('msg', 'Tambah data bagian gagal');
-				session()->setFlashdata('color', 'danger');
-			}
+			$data['id_bagian'] = $this->bagian_model->generateId($this->request->getVar('biro'));
+			$this->bagian_model->insertBagian($data);
+			session()->setFlashdata('msg', 'Tambah data bagian berhasil');
+			session()->setFlashdata('color', 'success');
 			return redirect()->to(base_url() . '/bagian');
 		} else {
-			return redirect()->to(base_url() . '/bagian/create')->withInput()->with('validation', $this->validation);
+			return redirect()->to(base_url() . '/bagian/create')->withInput();
 		}
 	}
 
@@ -90,16 +86,12 @@ class Bagian extends BaseController
 			'nama_bagian' => $this->request->getPost('nama_bagian')
 		];
 		if ($this->validation->run($data, 'bagianRules')) {
-			if ($this->bagian_model->updateBagian($data, $id)) {
-				session()->setFlashdata('msg', 'Update data bagian berhasil');
-				session()->setFlashdata('color', 'success');
-			} else {
-				session()->setFlashdata('msg', 'Update data bagian gagal');
-				session()->setFlashdata('color', 'danger');
-			}
+			$this->bagian_model->updateBagian($data, $id);
+			session()->setFlashdata('msg', 'Update data bagian berhasil');
+			session()->setFlashdata('color', 'success');
 			return redirect()->to(base_url() . '/bagian');
 		} else {
-			return redirect()->to(base_url() . '/bagian/edit/' . $id)->withInput()->with('validation', $this->validation);
+			return redirect()->to(base_url() . '/bagian/edit/' . $id)->withInput();
 		}
 	}
 

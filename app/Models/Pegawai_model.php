@@ -10,12 +10,6 @@ class Pegawai_model extends Model
 	protected $primaryKey           = 'nip';
 	protected $allowedFields        = ['nip, nama_pegawai, jenis_kelamin, email, password, role, foto'];
 
-	// Dates
-	protected $useTimestamps        = true;
-	protected $dateFormat           = 'datetime';
-	protected $createdField         = 'created_at';
-	protected $updatedField         = 'updated_at';
-
 	public function getPegawai($id = false)
 	{
 		$builder = $this->db->table($this->table);
