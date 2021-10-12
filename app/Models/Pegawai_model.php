@@ -13,7 +13,7 @@ class Pegawai_model extends Model
 	public function getPegawai($id = false)
 	{
 		$builder = $this->db->table($this->table);
-		$builder->select('tb_pegawai.*, tb_bagian.nama_bagian, tb_biro.nama_biro');
+		$builder->select('tb_pegawai.*, tb_bagian.nama_bagian, tb_biro.nama_biro, tb_biro.id_biro');
 		$builder->join('tb_bagian', 'tb_bagian.id_bagian = tb_pegawai.id_bagian');
 		$builder->join('tb_biro', 'tb_biro.id_biro = tb_bagian.id_biro');
 

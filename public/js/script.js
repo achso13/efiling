@@ -4,7 +4,7 @@ $(document).ready(function () {
 
         if (biro != '') {
             $.ajax({
-                url: "../bagian/action",
+                url: window.location.origin + "/bagian/action",
                 method: "POST",
                 data: { biro: biro },
                 dataType: "JSON",
@@ -20,3 +20,10 @@ $(document).ready(function () {
         }
     });
 });
+
+$('#inputGroupFile').on('change', function () {
+    //get the file name
+    var fileName = $(this).val().replace('C:\\fakepath\\', " ");
+    //replace the "Choose a file" label
+    $(this).next('.custom-file-label').html(fileName);
+})

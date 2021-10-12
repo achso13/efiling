@@ -25,13 +25,9 @@ class Pegawai extends Migration
 			'tgl_lahir' => [
 				'type'           => 'DATE',
 			],
-			'alamat' => [
-				'type'           => 'VARCHAR',
-				'constraint'	 => '255',
-			],
 			'no_telp' => [
 				'type'           => 'varchar',
-				'constraint'	 => '32',
+				'constraint'	 => '20',
 			],
 			'email'          => [
 				'type'           => 'VARCHAR',
@@ -53,6 +49,7 @@ class Pegawai extends Migration
 			],
 		]);
 		$this->forge->addKey('nip', true);
+		$this->forge->addForeignKey('id_bagian', 'tb_bagian', 'id_bagian', 'CASCADE', 'CASCADE');
 		$this->forge->createTable('tb_pegawai');
 	}
 

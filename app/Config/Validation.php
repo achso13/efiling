@@ -92,7 +92,7 @@ class Validation
 		],
 		'nip' => [
 			'label'  => 'NIP',
-			'rules'  => 'required|max_length[18]|is_unique[tb_pegawai.nip]',
+			'rules'  => 'required|max_length[18]|is_unique[tb_pegawai.nip,nip,{nip}]',
 			'errors' => [
 				'required' 	=> '{field} tidak boleh kosong',
 				'max_length' => '{field} terlalu panjang, maksimal memiliki {param} karakter',
@@ -114,13 +114,71 @@ class Validation
 				'required' 	=> '{field} tidak boleh kosong',
 			]
 		],
-		'jenis_kelamin' => [
-			'label'  => 'Jenis Kelamin',
-			'rules'  => 'required|in_list[L,P]',
+		'email' => [
+			'label'  => 'Email',
+			'rules'  => 'required|valid_email',
+			'errors' => [
+				'required' 	=> '{field} tidak boleh kosong',
+				'valid_email' => 'Format {field} salah'
+			]
+		],
+		'no_telp' => [
+			'label'  => 'Nomor Telepon/HP',
+			'rules'  => 'permit_empty|max_length[20]',
+			'errors' => [
+				'max_length' => '{field} terlalu panjang, maksimal memiliki {param} karakter',
+			]
+		],
+		'tgl_lahir' => [
+			'label'  => 'Tanggal Lahir',
+			'rules'  => 'permit_empty|valid_date',
+			'errors' => [
+				'valid_date' => 'Yang anda masukan bukan format tanggal yang benar.',
+			]
+		],
+		'foto' => [
+			'label'  => 'Foto',
+			'rules'  => 'is_image[foto]|mime_in[foto,image/jpg,image/jpeg,image/gif,image/png]|max_size[foto,2048]',
+			'errors' => [
+				'is_image' => 'File yang anda upload bukan foto',
+				'mime_in' => 'Foto hanya boleh diisi dengan jpg, jpeg, png atau gif',
+				'max_size' => 'Foto maksimal 2mb',
+			]
+		],
+	];
+
+	public $pegawaiUpdateRules = [
+		'id_biro' => [
+			'label'  => 'Biro',
+			'rules'  => 'required|in_db[tb_biro.id_biro]',
 			'errors' => [
 				'required' 	=> 'Anda belum memilih {field}',
-				'in_list' => 'Value tidak diizinkan'
+				'in_db' 	=>	'Value tidak diizinkan',
+			]
+		],
+		'id_bagian' => [
+			'label'  => 'Bagian',
+			'rules'  => 'required|in_db[tb_bagian.id_bagian]',
+			'errors' => [
+				'required' 	=> 'Anda belum memilih {field}',
+				'in_db' 	=>	'Value tidak diizinkan',
+			]
+		],
+		'nip' => [
+			'label'  => 'NIP',
+			'rules'  => 'required|max_length[18]|is_unique[tb_pegawai.nip,nip,{nip}]',
+			'errors' => [
+				'required' 	=> '{field} tidak boleh kosong',
+				'max_length' => '{field} terlalu panjang, maksimal memiliki {param} karakter',
+				'is_unique' => '{field} sudah ada'
 
+			]
+		],
+		'nama_pegawai' => [
+			'label'  => 'Nama Pegawai',
+			'rules'  => 'required',
+			'errors' => [
+				'required' 	=> '{field} tidak boleh kosong',
 			]
 		],
 		'email' => [
@@ -129,6 +187,20 @@ class Validation
 			'errors' => [
 				'required' 	=> '{field} tidak boleh kosong',
 				'valid_email' => 'Format {field} salah'
+			]
+		],
+		'no_telp' => [
+			'label'  => 'Nomor Telepon/HP',
+			'rules'  => 'permit_empty|max_length[20]',
+			'errors' => [
+				'max_length' => '{field} terlalu panjang, maksimal memiliki {param} karakter',
+			]
+		],
+		'tgl_lahir' => [
+			'label'  => 'Tanggal Lahir',
+			'rules'  => 'permit_empty|valid_date',
+			'errors' => [
+				'valid_date' => 'Yang anda masukan bukan format tanggal yang benar.',
 			]
 		],
 		'foto' => [

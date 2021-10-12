@@ -50,12 +50,12 @@
                         <td><?= $pegawai['role']; ?></td>
                     </tr>
                     <tr>
-                        <td>Created At</td>
-                        <td><?= empty($pegawai['created_at']) ? '(not set)' : $pegawai['created_at']; ?></td>
+                        <td>No Telepon/HP</td>
+                        <td><?= empty($pegawai['no_telp']) ? '(not set)' : $pegawai['no_telp']; ?></td>
                     </tr>
                     <tr>
-                        <td>Updated At</td>
-                        <td><?= empty($pegawai['updated_at']) ? '(not set)' : $pegawai['updated_at']; ?></td>
+                        <td>Tanggal Lahir</td>
+                        <td><?= empty($pegawai['tgl_lahir']) || $pegawai['tgl_lahir'] === '0000-00-00' ? '(not set)' : $pegawai['tgl_lahir']; ?></td>
                     </tr>
                 </tbody>
             </table>
