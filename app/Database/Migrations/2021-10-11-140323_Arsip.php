@@ -39,6 +39,14 @@ class Arsip extends Migration
 				'constraint'	 => ['Aktif', 'Nonaktif'],
 				'default'        => 'Aktif',
 			],
+			'created_at' => [
+				'type'	=> 'datetime',
+				'null'	=> true
+			],
+			'updated_at' => [
+				'type'	=> 'datetime',
+				'null'	=> true
+			],
 		]);
 		$this->forge->addKey('id_arsip', true);
 		$this->forge->addForeignKey('id_jenis_arsip', 'tb_jenis_arsip', 'id_jenis_arsip', 'CASCADE', 'CASCADE');

@@ -24,8 +24,16 @@ class Lampiran extends Migration
 				'type'           => 'VARCHAR',
 				'constraint'     => '255',
 			],
-			'tanggal_upload'          => [
-				'type'           => 'DATETIME',
+			// 'tanggal_upload'          => [
+			// 	'type'           => 'DATETIME',
+			// ],
+			'created_at' => [
+				'type'	=> 'datetime',
+				'null'	=> true
+			],
+			'updated_at' => [
+				'type'	=> 'datetime',
+				'null'	=> true
 			],
 		]);
 		$this->forge->addKey('id_lampiran', true);

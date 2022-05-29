@@ -24,6 +24,14 @@ class Bagian extends Migration
 				'constraint'	 => '2',
 				'unsigned'       => true,
 			],
+			'created_at' => [
+				'type'	=> 'datetime',
+				'null'	=> true
+			],
+			'updated_at' => [
+				'type'	=> 'datetime',
+				'null'	=> true
+			],
 		]);
 		$this->forge->addKey('id_bagian', true);
 		$this->forge->addForeignKey('id_biro', 'tb_biro', 'id_biro', 'CASCADE', 'CASCADE');

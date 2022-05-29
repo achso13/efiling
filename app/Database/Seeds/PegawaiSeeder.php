@@ -11,11 +11,11 @@ class PegawaiSeeder extends Seeder
 	{
 		$data = [
 			'nip' 			=> '1810512094',
-			'nama_pegawai' 	=> 'Achmad Solehuddin',
-			'password'    	=> password_hash('03202485', PASSWORD_DEFAULT),
-			'tgl_lahir'		=> '1999-07-29',
-			'no_telp'		=> '085156879802',
-			'email'    		=> 'achmads@upnvj.ac.id',
+			'nama_pegawai' 	=> 'John Doe',
+			'password'    	=> password_hash('12345', PASSWORD_DEFAULT),
+			'tgl_lahir'		=> '2000-04-20',
+			'no_telp'		=> '1234567890',
+			'email'    		=> 'email@email.com',
 			'id_bagian'		=> '0101',
 			'foto'    		=> 'default.png',
 			'role'    		=> 'Admin',

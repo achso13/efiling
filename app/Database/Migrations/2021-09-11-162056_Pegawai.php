@@ -47,6 +47,14 @@ class Pegawai extends Migration
 				'constraint'	 => ['Admin', 'Pegawai'],
 				'default'        => 'Pegawai',
 			],
+			'created_at' => [
+				'type'	=> 'datetime',
+				'null'	=> true
+			],
+			'updated_at' => [
+				'type'	=> 'datetime',
+				'null'	=> true
+			],
 		]);
 		$this->forge->addKey('nip', true);
 		$this->forge->addForeignKey('id_bagian', 'tb_bagian', 'id_bagian', 'CASCADE', 'CASCADE');

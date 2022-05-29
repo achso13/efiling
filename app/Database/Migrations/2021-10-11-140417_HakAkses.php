@@ -24,6 +24,14 @@ class HakAkses extends Migration
 				'type'           => 'VARCHAR',
 				'constraint'     => '4',
 			],
+			'created_at' => [
+				'type'	=> 'datetime',
+				'null'	=> true
+			],
+			'updated_at' => [
+				'type'	=> 'datetime',
+				'null'	=> true
+			],
 		]);
 		$this->forge->addKey('id_hak_akses', true);
 		$this->forge->addForeignKey('id_arsip', 'tb_arsip', 'id_arsip', 'CASCADE', 'CASCADE');

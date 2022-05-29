@@ -9,6 +9,7 @@ class Biro_model extends Model
 	protected $table                = 'tb_biro';
 	protected $primaryKey           = 'id_biro';
 	protected $allowedFields        = ['nama_biro'];
+	protected $useTimestamps        = true;
 
 	public function getBiro($id = false)
 	{
@@ -19,18 +20,18 @@ class Biro_model extends Model
 		}
 	}
 
-	public function insertBiro($data)
-	{
-		return $this->db->table($this->table)->insert($data);
-	}
+	// public function insertBiro($data)
+	// {
+	// 	return $this->db->table($this->table)->insert($data);
+	// }
 
-	public function updateBiro($data, $id)
-	{
-		return $this->db->table($this->table)->update($data, ['id_biro' => $id]);
-	}
+	// public function updateBiro($data, $id)
+	// {
+	// 	return $this->db->table($this->table)->update($data, ['id_biro' => $id]);
+	// }
 
-	public function deleteBiro($id)
-	{
-		return $this->db->table($this->table)->delete(['id_biro' => $id]);
-	}
+	// public function deleteBiro($id)
+	// {
+	// 	return $this->db->table($this->table)->delete(['id_biro' => $id]);
+	// }
 }

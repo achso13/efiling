@@ -50,7 +50,7 @@ class Biro extends BaseController
 			'nama_biro' => $this->request->getPost('nama_biro'),
 		];
 		if ($this->validation->run($data, 'biroRules')) {
-			$this->biro_model->insertBiro($data);
+			$this->biro_model->insert($data);
 			session()->setFlashdata('msg', 'Tambah data biro berhasil');
 			session()->setFlashdata('color', 'success');
 			return redirect()->to(base_url() . '/biro');
@@ -79,7 +79,7 @@ class Biro extends BaseController
 			'nama_biro' => $this->request->getPost('nama_biro'),
 		];
 		if ($this->validation->run($data, 'biroRules')) {
-			$this->biro_model->updateBiro($data, $id);
+			$this->biro_model->update($id, $data);
 			session()->setFlashdata('msg', 'Update data biro berhasil');
 			session()->setFlashdata('color', 'success');
 			return redirect()->to(base_url() . '/biro');
@@ -90,7 +90,7 @@ class Biro extends BaseController
 
 	public function delete($id)
 	{
-		if ($this->biro_model->deleteBiro($id)) {
+		if ($this->biro_model->delete($id)) {
 			session()->setFlashdata('msg', 'Hapus data biro berhasil');
 			session()->setFlashdata('color', 'success');
 			return redirect()->to(base_url() . '/biro');

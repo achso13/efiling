@@ -25,7 +25,7 @@
             <div class="form-group row mb-4">
                 <label for="biro" class="col-sm-2 col-lg-2">Nama Biro <span class="text-danger">*</span></label>
                 <div class="col-sm-10 col-lg-8">
-                    <select class="custom-select <?= ($validation->hasError('id_biro')) ? 'is-invalid' : ''; ?>" name="biro">
+                    <select class="select2 custom-select <?= ($validation->hasError('id_biro')) ? 'is-invalid' : ''; ?>" name="biro">
                         <option value="">Pilih Biro</option>
                         <?php foreach ($listBiro as $biro) : ?>
                             <option value="<?= $biro['id_biro']; ?>" <?= $bagian['id_biro'] === $biro['id_biro'] ? 'selected' : ''; ?>><?= $biro['nama_biro'] ?></option>

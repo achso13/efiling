@@ -55,7 +55,7 @@ class Bagian extends BaseController
 		];
 		if ($this->validation->run($data, 'bagianRules')) {
 			$data['id_bagian'] = $this->bagian_model->generateId($this->request->getVar('biro'));
-			$this->bagian_model->insertBagian($data);
+			$this->bagian_model->insert($data);
 			session()->setFlashdata('msg', 'Tambah data bagian berhasil');
 			session()->setFlashdata('color', 'success');
 			return redirect()->to(base_url() . '/bagian');
@@ -86,7 +86,7 @@ class Bagian extends BaseController
 			'nama_bagian' => $this->request->getPost('nama_bagian')
 		];
 		if ($this->validation->run($data, 'bagianRules')) {
-			$this->bagian_model->updateBagian($data, $id);
+			$this->bagian_model->update($id, $data);
 			session()->setFlashdata('msg', 'Update data bagian berhasil');
 			session()->setFlashdata('color', 'success');
 			return redirect()->to(base_url() . '/bagian');
@@ -97,7 +97,7 @@ class Bagian extends BaseController
 
 	public function delete($id)
 	{
-		if ($this->bagian_model->deleteBagian($id)) {
+		if ($this->bagian_model->delete($id)) {
 			session()->setFlashdata('msg', 'Hapus data bagian berhasil');
 			session()->setFlashdata('color', 'success');
 			return redirect()->to(base_url() . '/bagian');

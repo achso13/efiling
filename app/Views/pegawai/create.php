@@ -61,7 +61,7 @@
             <div class="form-group row mb-4">
                 <label for="biro" class="col-sm-2 col-lg-2">Nama Biro <span class="text-danger">*</span></label>
                 <div class="col-sm-10 col-lg-8">
-                    <select class="custom-select <?= ($validation->hasError('id_biro')) ? 'is-invalid' : ''; ?>" name="biro" id="biro">
+                    <select class="select2 custom-select <?= ($validation->hasError('id_biro')) ? 'is-invalid' : ''; ?>" name="biro" id="biro">
                         <option value="">Pilih Biro</option>
                         <?php foreach ($listBiro as $biro) : ?>
                             <option value="<?= $biro['id_biro']; ?>" <?= old('biro') === $biro['id_biro'] ? 'selected' : ''; ?>><?= $biro['nama_biro'] ?></option>
@@ -75,7 +75,7 @@
             <div class="form-group row mb-4">
                 <label for="nama_bagian" class="col-sm-2 col-lg-2">Nama Bagian <span class="text-danger">*</span></label>
                 <div class="col-sm-10 col-lg-8">
-                    <select class="custom-select <?= ($validation->hasError('id_bagian')) ? 'is-invalid' : ''; ?>" name="bagian" id="bagian">
+                    <select class="select2 custom-select <?= ($validation->hasError('id_bagian')) ? 'is-invalid' : ''; ?>" name="bagian" id="bagian">
                         <option value="">Pilih Bagian</option>
                         <?php
                         if (old('biro') !== NULL) :

@@ -8,7 +8,9 @@ class Pegawai_model extends Model
 {
 	protected $table                = 'tb_pegawai';
 	protected $primaryKey           = 'nip';
-	protected $allowedFields        = ['nip, nama_pegawai, jenis_kelamin, email, password, role, foto'];
+	protected $allowedFields        = ['nip', 'nama_pegawai', 'password', 'tgl_lahir', 'no_telp', 'email', 'id_bagian', 'foto', 'role'];
+	protected $useTimestamps        = true;
+	protected $useAutoIncrement = false;
 
 	public function getPegawai($id = false)
 	{
@@ -24,18 +26,18 @@ class Pegawai_model extends Model
 		}
 	}
 
-	public function insertPegawai($data)
-	{
-		return $this->db->table($this->table)->insert($data);
-	}
+	// public function insertPegawai($data)
+	// {
+	// 	return $this->db->table($this->table)->insert($data);
+	// }
 
-	public function updatePegawai($data, $id)
-	{
-		return $this->db->table($this->table)->update($data, ['nip' => $id]);
-	}
+	// public function updatePegawai($data, $id)
+	// {
+	// 	return $this->db->table($this->table)->update($data, ['nip' => $id]);
+	// }
 
-	public function deletePegawai($id)
-	{
-		return $this->db->table($this->table)->delete(['nip' => $id]);
-	}
+	// public function deletePegawai($id)
+	// {
+	// 	return $this->db->table($this->table)->delete(['nip' => $id]);
+	// }
 }

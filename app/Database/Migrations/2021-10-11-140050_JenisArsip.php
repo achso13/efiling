@@ -19,6 +19,14 @@ class JenisArsip extends Migration
 				'type'       	 => 'VARCHAR',
 				'constraint' 	 => '128',
 			],
+			'created_at' => [
+				'type'	=> 'datetime',
+				'null'	=> true
+			],
+			'updated_at' => [
+				'type'	=> 'datetime',
+				'null'	=> true
+			],
 		]);
 		$this->forge->addKey('id_jenis_arsip', true);
 		$this->forge->createTable('tb_jenis_arsip');

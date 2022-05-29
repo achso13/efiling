@@ -8,8 +8,9 @@ class Bagian_model extends Model
 {
 	protected $table                = 'tb_bagian';
 	protected $primaryKey			= 'id_bagian';
-	protected $allowedFields        = ['nama_bagian, id_biro'];
+	protected $allowedFields        = ['id_bagian', 'nama_bagian', 'id_biro'];
 	protected $useTimestamps        = true;
+	protected $useAutoIncrement = false;
 
 	public function getBagian($id = false)
 	{
@@ -30,23 +31,23 @@ class Bagian_model extends Model
 		$builder = $this->db->table($this->table);
 		$maxIdBagian = substr($builder->selectMax('id_bagian')->getWhere(['id_biro' => $idBiro])->getRowArray()['id_bagian'], -2);
 
-		$idBaru = sprintf("%02d", $idBiro) . sprintf("%02d", $maxIdBagian + 1);
+		$idBaru = sprintf("%02d", $idBiro) . sprintf("%02d", intval($maxIdBagian) + 1);
 
 		return $idBaru;
 	}
 
-	public function insertBagian($data)
-	{
-		return $this->db->table($this->table)->insert($data);
-	}
+	// public function insertBagian($data)
+	// {
+	// 	return $this->db->table($this->table)->insert($data);
+	// }
 
-	public function updateBagian($data, $id)
-	{
-		return $this->db->table($this->table)->update($data, ['id_bagian' => $id]);
-	}
+	// public function updateBagian($data, $id)
+	// {
+	// 	return $this->db->table($this->table)->update($data, ['id_bagian' => $id]);
+	// }
 
-	public function deleteBagian($id)
-	{
-		return $this->db->table($this->table)->delete(['id_bagian' => $id]);
-	}
+	// public function deleteBagian($id)
+	// {
+	// 	return $this->db->table($this->table)->delete(['id_bagian' => $id]);
+	// }
 }

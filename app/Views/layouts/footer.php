@@ -56,6 +56,16 @@
 <script src="<?= base_url(); ?>/plugin/datatables/jquery.dataTables.min.js"></script>
 <script src="<?= base_url(); ?>/plugin/datatables/dataTables.bootstrap4.min.js"></script>
 <script src="<?= base_url(); ?>/js/demo/datatables-demo.js"></script>
+
+<!-- Select2 Call -->
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.select2').select2({
+            theme: 'bootstrap4',
+        });
+    });
+</script>
 </body>
 
 </html>

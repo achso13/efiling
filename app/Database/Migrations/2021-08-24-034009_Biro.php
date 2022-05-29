@@ -20,6 +20,14 @@ class Biro extends Migration
 				'type'       => 'VARCHAR',
 				'constraint' => '100',
 			],
+			'created_at' => [
+				'type'	=> 'datetime',
+				'null'	=> true
+			],
+			'updated_at' => [
+				'type'	=> 'datetime',
+				'null'	=> true
+			],
 		]);
 		$this->forge->addKey('id_biro', true);
 		$this->forge->createTable('tb_biro');

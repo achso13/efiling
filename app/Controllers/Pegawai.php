@@ -75,7 +75,7 @@ class Pegawai extends BaseController
 			if ($foto->getError() !== 4) {
 				$foto->move(ROOTPATH . 'public/uploads/profile_img', $namaFoto);
 			}
-			$this->pegawai_model->insertPegawai($data);
+			$this->pegawai_model->insert($data);
 			session()->setFlashdata('msg', 'Tambah data pegawai berhasil');
 			session()->setFlashdata('color', 'success');
 			return redirect()->to(base_url() . '/pegawai');
@@ -131,7 +131,7 @@ class Pegawai extends BaseController
 					unlink(ROOTPATH . 'public/uploads/profile_img/' .  $fotoLama);
 				}
 			}
-			$this->pegawai_model->updatePegawai($data, $id);
+			$this->pegawai_model->update($id, $data);
 			session()->setFlashdata('msg', 'Edit data pegawai berhasil');
 			session()->setFlashdata('color', 'success');
 			return redirect()->to(base_url() . '/pegawai');
@@ -143,7 +143,7 @@ class Pegawai extends BaseController
 
 	public function delete($id)
 	{
-		if ($this->pegawai_model->deletePegawai($id)) {
+		if ($this->pegawai_model->delete($id)) {
 			session()->setFlashdata('msg', 'Hapus data pegawai berhasil');
 			session()->setFlashdata('color', 'success');
 			return redirect()->to(base_url() . '/pegawai');
